@@ -1,95 +1,167 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+html = r'''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f7f3ed">
-<link rel="preconnect" href="https://fonts.cdnfonts.com">
-<link href="https://fonts.cdnfonts.com/css/mending" rel="stylesheet">
-<meta name="description" content="Join Akshay and Prashasti as they celebrate their wedding on 27 January 2027 in Nagpur.">
-<title>Akshay &amp; Prashasti | Wedding Invitation</title>
+<meta name="theme-color" content="#641d2b">
+<meta name="description" content="You are warmly invited to celebrate the wedding of Akshay and Prashasti on 27 January 2027 in Nagpur.">
+<title>Akshay & Prashasti | The Wedding Celebration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#f7f3ed;--paper:#fffdf9;--sage:#9eae9a;--deep:#3f5848;--gold:#b89a68;--ink:#2d382f;--muted:#6d766d;--line:#e4dacb}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Mending',Georgia,serif;position:relative}a{color:inherit}
-/* Soft botanical background: subtle floral line-art behind every section */
-body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.20;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420' fill='none'%3E%3Cg stroke='%23899b82' stroke-width='1.35' stroke-linecap='round' stroke-linejoin='round' opacity='.8'%3E%3Cpath d='M-15 130C45 110 65 65 80 5M28 107C5 83 7 62 21 48C42 62 45 81 28 107ZM50 78C47 48 61 32 83 28C88 51 76 68 50 78ZM69 43C90 52 110 44 118 24C98 12 79 21 69 43ZM-4 151C30 133 63 137 89 162M34 137C24 117 32 100 50 94C62 112 54 129 34 137ZM82 157C93 135 112 130 130 141C122 162 103 169 82 157Z'/%3E%3C/g%3E%3Cg stroke='%23b89a68' stroke-width='1.15' opacity='.9'%3E%3Cpath d='M340 4C330 26 340 48 360 59C380 48 390 26 380 4C367 14 353 14 340 4Z M360 59C360 77 349 91 332 98M360 59C372 76 389 83 405 80'/%3E%3Cpath d='M355 28C343 21 340 10 345 0M365 28C377 21 380 10 375 0'/%3E%3C/g%3E%3Cg fill='%23d9b7b1' fill-opacity='.48' stroke='%23b89a68' stroke-width='1'%3E%3Cpath d='M308 330C288 314 288 294 307 283C326 294 326 314 308 330Z M308 330C284 328 273 312 282 294C302 299 311 312 308 330Z M308 330C309 306 326 296 342 307C337 326 323 334 308 330Z M308 330C326 333 333 350 320 363C303 355 300 342 308 330Z M308 330C291 346 272 341 269 323C284 313 298 318 308 330Z'/%3E%3C/g%3E%3C/svg%3E");background-size:420px 420px;background-position:top left}
-body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#f7f3ed88,#fffdf988 45%,#f7f3ed88)}
+:root{
+  --maroon:#641d2b;--wine:#43131f;--red:#8f3440;--gold:#c49a48;
+  --gold-light:#e7cf91;--cream:#fff8e9;--paper:#fffdf7;
+  --ink:#39252a;--muted:#806b68;--line:#e8d8b8;--saffron:#d77a27;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Poppins,Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.12;background-image:
+  radial-gradient(circle at 20px 20px,transparent 10px,#c49a48 10.5px,transparent 11px),
+  radial-gradient(circle at 60px 60px,transparent 10px,#c49a48 10.5px,transparent 11px);
+  background-size:80px 80px}
+a{color:inherit}
 button{font:inherit;cursor:pointer}
-.topbar{position:sticky;top:0;z-index:10;background:#f7f3edeF;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{max-width:1100px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{font-size:.8rem;letter-spacing:.13em;color:var(--deep);text-transform:uppercase;white-space:nowrap}.navlinks{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.nav a{text-decoration:none;font: .8rem Arial,sans-serif;color:var(--deep)}.nav a:hover{text-decoration:underline}
-.music-btn{border:1px solid var(--gold);background:transparent;color:var(--deep);padding:9px 12px;font: .75rem Arial,sans-serif}
-.hero{min-height:88vh;display:grid;place-items:center;text-align:center;padding:56px 18px;position:relative;overflow:hidden;background:radial-gradient(ellipse at top,#fffdf9 0%,var(--cream) 72%)}
-.hero:before,.hero:after{content:"";position:absolute;width:270px;height:270px;border:1px solid #b89a6855;border-radius:50%;pointer-events:none}.hero:before{top:-145px;left:-100px}.hero:after{right:-120px;bottom:-160px}
-.hero-card{position:relative;width:min(760px,100%);padding:clamp(32px,7vw,72px) 22px;background:#fffdf9d9;border:1px solid #d8c8ad;outline:1px solid #d8c8ad88;outline-offset:7px;box-shadow:0 22px 65px #4a392012}
-.flower{font-size:1.5rem;color:var(--sage);letter-spacing:.35em}.eyebrow,.kicker{font: .7rem Arial,sans-serif;text-transform:uppercase;letter-spacing:.23em;color:var(--gold)}
-h1{font-weight:400;font-size:clamp(3.1rem,10vw,6.8rem);line-height:.94;color:var(--deep);margin:22px 0 17px}h1 .amp{font-style:italic;color:var(--gold);font-size:.72em}
-.hero p{max-width:490px;margin:14px auto;color:var(--muted);line-height:1.8}.date-line{font: .8rem Arial,sans-serif;text-transform:uppercase;letter-spacing:.15em;color:var(--deep);margin-top:26px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--deep);color:white;border:1px solid var(--deep);padding:13px 19px;text-decoration:none;font: .78rem Arial,sans-serif;letter-spacing:.05em;transition:transform .2s,background .2s}.btn:hover{transform:translateY(-2px);background:#2f4637}.btn.secondary{background:transparent;color:var(--deep);border-color:var(--gold)}.hero .btn{margin-top:18px}
-section{padding:74px 20px}.inner{max-width:950px;margin:auto;text-align:center}.kicker{color:var(--gold)}h2{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:400;color:var(--deep);margin:12px 0 18px}.intro{max-width:660px;margin:0 auto;color:var(--muted);line-height:1.85}
-.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:590px;margin:32px auto}.countbox{background:var(--paper);border:1px solid var(--line);padding:19px 8px}.countbox strong{display:block;font-size:clamp(1.7rem,5vw,2.7rem);font-weight:400;color:var(--deep)}.countbox span{font: .62rem Arial,sans-serif;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
-.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
-.story{background:#eef0e9e8}.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;margin-top:32px;text-align:left}.story-photo{width:100%;height:370px;object-fit:cover;display:block;border:7px solid var(--paper);box-shadow:0 8px 28px #38463112}.story-copy{padding:10px}.story-copy p{line-height:1.9;color:var(--muted)}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}.gallery figure{margin:0;overflow:hidden;background:var(--paper);border:1px solid var(--line)}.gallery img{display:block;width:100%;height:260px;object-fit:cover;transition:transform .4s}.gallery figure:hover img{transform:scale(1.04)}.gallery figcaption{font: .72rem Arial,sans-serif;letter-spacing:.08em;color:var(--muted);padding:12px}
-.events{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;text-align:left}.event{padding:24px 20px;background:var(--paper);border-top:2px solid var(--gold)}.event .time{font: .7rem Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}.event h3{font-size:1.35rem;font-weight:400;color:var(--deep);margin:10px 0}.event p{font: .88rem/1.7 Arial,sans-serif;color:var(--muted);margin-bottom:0}
-.venue{background:#3f5848f2;color:white}.venue h2{color:white}.venue .intro{color:#e7ebe4}.venue .btn{margin-top:24px;background:var(--paper);color:var(--deep);border-color:var(--paper)}
-footer{text-align:center;padding:34px 18px 42px;color:var(--muted);font-size:.9rem}.heart{color:var(--gold)}.small{font: .72rem/1.6 Arial,sans-serif;color:var(--muted);margin-top:10px}
-.fade{animation:rise .9s both}@keyframes rise{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:700px){.nav{align-items:flex-start}.navlinks{justify-content:flex-end;gap:11px}.nav a{font-size:.72rem}.music-btn{padding:7px 9px}.story-grid{grid-template-columns:1fr}.story-photo{height:310px}.gallery{grid-template-columns:repeat(2,1fr)}.gallery img{height:210px}.events{grid-template-columns:1fr}section{padding:58px 16px}}
-@media(max-width:420px){.brand{font-size:.68rem}.navlinks{gap:8px}.gallery{grid-template-columns:1fr}.gallery img{height:260px}.countdown{gap:5px}.countbox{padding:14px 3px}.countbox span{font-size:.56rem;letter-spacing:.06em}}
+.topbar{position:sticky;top:0;z-index:20;background:#fff8e9ed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1180px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:600;color:var(--maroon);white-space:nowrap}
+.navlinks{display:flex;align-items:center;justify-content:flex-end;gap:20px;flex-wrap:wrap}
+.navlinks a{font-size:.75rem;text-decoration:none;color:var(--maroon);letter-spacing:.06em}
+.navlinks a:hover{color:var(--saffron)}
+.music-btn{border:1px solid var(--gold);background:transparent;color:var(--maroon);padding:8px 12px;font-size:.72rem;border-radius:30px}
+.hero{min-height:calc(100vh - 58px);display:grid;place-items:center;text-align:center;padding:60px 18px;position:relative;overflow:hidden;color:#fff8e9;
+ background:linear-gradient(135deg,#45131fef,#762637eF),url("https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1800&q=85") center/cover}
+.hero:before,.hero:after{content:"";position:absolute;inset:22px;border:1px solid #d8b76d99;pointer-events:none}
+.hero:after{inset:30px;border:1px solid #d8b76d55}
+.hero-inner{position:relative;z-index:1;width:min(760px,100%);padding:clamp(32px,6vw,70px) 22px}
+.ornament{font-size:2rem;color:var(--gold-light);letter-spacing:.3em}
+.eyebrow,.kicker{font-size:.68rem;text-transform:uppercase;letter-spacing:.25em;color:var(--gold);font-weight:500}
+.hero .eyebrow{color:var(--gold-light);margin-top:18px}
+.hero h1{font-family:"Great Vibes",cursive;font-size:clamp(4.2rem,12vw,8.3rem);font-weight:400;line-height:.92;margin:22px 0 8px;color:#fff8e9}
+.hero h1 span{display:block;font-family:"Cormorant Garamond",serif;font-size:.43em;color:var(--gold-light);font-style:italic;margin:8px}
+.hero-copy{font-family:"Cormorant Garamond",serif;font-size:1.45rem;line-height:1.5;max-width:540px;margin:24px auto 12px}
+.date-line{font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-light);margin:24px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--gold);background:var(--gold);color:var(--wine);padding:13px 21px;text-decoration:none;font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;transition:.2s;border-radius:2px}
+.btn:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn.outline{background:transparent;color:var(--maroon)}
+.hero .btn{margin-top:12px}
+section{padding:82px 20px}
+.inner{max-width:1050px;margin:auto;text-align:center}
+.kicker{color:var(--saffron)}
+h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2.5rem,6vw,4.1rem);font-weight:500;color:var(--maroon);line-height:1;margin:12px 0 20px}
+.intro{max-width:700px;margin:0 auto;color:var(--muted);font-size:.9rem;line-height:1.9}
+.divider{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--gold);margin:20px auto;font-size:1.25rem}
+.divider:before,.divider:after{content:"";height:1px;width:65px;background:var(--gold)}
+.countdown-section{background:var(--paper)}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:650px;margin:34px auto 15px}
+.countbox{padding:22px 8px;background:linear-gradient(145deg,#fffdf8,#f8eedb);border:1px solid var(--line);box-shadow:0 8px 24px #5c2a170b}
+.countbox strong{display:block;font-family:"Cormorant Garamond",serif;font-size:clamp(2.1rem,6vw,3.2rem);font-weight:500;color:var(--maroon);line-height:1.1}
+.countbox span{font-size:.62rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted)}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:24px}
+.story{background:#f3e8d4}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center;margin-top:38px;text-align:left}
+.story-photo{width:100%;height:420px;object-fit:cover;border:9px solid var(--paper);outline:1px solid var(--gold);box-shadow:0 15px 35px #43201818}
+.story-copy{padding:10px}
+.story-copy h3{font-family:"Great Vibes",cursive;font-size:3.4rem;font-weight:400;color:var(--maroon);margin:8px 0}
+.story-copy p{color:var(--muted);font-size:.9rem;line-height:2}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:36px}
+.gallery figure{margin:0;background:var(--paper);padding:8px;border:1px solid var(--line);box-shadow:0 8px 22px #5c2a170b;overflow:hidden}
+.gallery img{display:block;width:100%;height:285px;object-fit:cover;transition:transform .45s}
+.gallery figure:hover img{transform:scale(1.045)}
+.gallery figcaption{font-size:.65rem;letter-spacing:.16em;color:var(--maroon);padding:13px 5px 7px}
+.events-section{background:var(--paper)}
+.events{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px;text-align:center}
+.event{position:relative;padding:30px 22px;background:#fffaf0;border:1px solid var(--line);min-height:230px}
+.event:before{content:"✥";display:block;color:var(--gold);font-size:1.6rem}
+.event .time{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--saffron);margin-top:12px}
+.event h3{font-family:"Cormorant Garamond",serif;font-size:1.8rem;font-weight:600;color:var(--maroon);margin:10px 0}
+.event p{font-size:.82rem;line-height:1.8;color:var(--muted);margin:0}
+.venue{color:#fff8e9;background:linear-gradient(135deg,#43131ff5,#6d2433f5),url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=85") center/cover}
+.venue h2{color:#fff8e9}.venue .intro{color:#f1dfd2}.venue .kicker{color:var(--gold-light)}
+.venue .btn{margin-top:25px}
+.note{font-size:.72rem;color:var(--muted);line-height:1.7;margin-top:18px}
+.venue .note{color:#ead8cc}
+footer{text-align:center;padding:38px 18px 46px;background:var(--wine);color:#f8e9d0;font-family:"Cormorant Garamond",serif;font-size:1.2rem}
+footer strong{display:block;color:var(--gold-light);font-size:1.35rem;margin-top:8px}
+.heart{color:#e6a0a0}
+.fade{animation:rise .9s both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){
+ .nav{align-items:flex-start}.navlinks{gap:10px}.navlinks a{font-size:.67rem}.brand{font-size:1.15rem}
+ .story-grid{grid-template-columns:1fr;gap:20px}.story-photo{height:330px}
+ .events{grid-template-columns:1fr}.event{min-height:0}.gallery{grid-template-columns:repeat(2,1fr)}
+ section{padding:64px 16px}
+}
+@media(max-width:480px){
+ .nav{padding:10px 12px;display:block}.brand{text-align:center;margin-bottom:8px}.navlinks{justify-content:center;gap:11px}
+ .navlinks a{font-size:.62rem}.music-btn{padding:6px 9px;font-size:.62rem}
+ .hero{min-height:82vh;padding:30px 12px}.hero:before{inset:12px}.hero:after{inset:19px}
+ .hero h1{font-size:4.5rem}.hero-copy{font-size:1.2rem}
+ .countdown{gap:6px}.countbox{padding:15px 3px}.countbox span{font-size:.54rem;letter-spacing:.08em}
+ .gallery{grid-template-columns:1fr 1fr;gap:8px}.gallery img{height:190px}
+ .gallery figcaption{font-size:.57rem}.actions .btn{width:100%}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade{animation:none}*{transition:none!important}}
 </style>
 </head>
 <body>
 <header class="topbar">
   <div class="nav">
-    <div class="brand">Akshay &amp; Prashasti</div>
+    <div class="brand">Akshay <span style="color:var(--gold)">&</span> Prashasti</div>
     <nav class="navlinks" aria-label="Main navigation">
-      <a href="#story">Our Story</a><a href="#gallery">Gallery</a><a href="#details">Details</a><a href="#venue">Venue</a>
+      <a href="#story">Our Story</a><a href="#gallery">Gallery</a><a href="#details">Celebrations</a><a href="#venue">Venue</a>
       <button class="music-btn" id="musicToggle" type="button" aria-pressed="false">♫ Music: Off</button>
     </nav>
   </div>
 </header>
+
 <main>
   <section class="hero" id="home">
-    <div class="hero-card fade">
-      <div class="flower" aria-hidden="true">✿ ❧ ✿</div>
-      <div class="eyebrow">Together with our families</div>
-      <h1>Akshay<br><span class="amp">&amp;</span><br>Prashasti</h1>
-      <p>With full hearts and joyful anticipation, we invite you to celebrate the beginning of our forever.</p>
-      <div class="date-line">27 January 2027 · Nagpur</div>
-      <p>Choker Dhani, Nagpur <span style="font-size:.8em">(venue name to confirm)</span></p>
-      <a class="btn" href="#details">Explore the Invitation ↓</a>
+    <div class="hero-inner fade">
+      <div class="ornament" aria-hidden="true">❁ ❧ ❁</div>
+      <div class="eyebrow">|| Shubh Vivah || · Together with our families</div>
+      <h1>Akshay <span>&</span> Prashasti</h1>
+      <div class="hero-copy">Two hearts, two families, and one beautiful beginning.<br>With joy in our hearts, we invite you to celebrate our wedding.</div>
+      <div class="date-line">Wednesday · 27 January 2027 · Nagpur</div>
+      <a class="btn" href="#details">Explore the celebrations ↓</a>
     </div>
   </section>
 
-  <section id="countdown">
+  <section class="countdown-section" id="countdown">
     <div class="inner">
-      <div class="kicker">Save the date</div><h2>Our forever starts soon</h2>
-      <p class="intro">One beautiful day, two hearts, and all our favourite people. We can’t wait to celebrate with you.</p>
+      <div class="kicker">Save the date</div><h2>A day to remember</h2>
+      <div class="divider">❀</div>
+      <p class="intro">Your presence will make our special day even more memorable. We cannot wait to celebrate love, laughter and new beginnings with you.</p>
       <div class="countdown" aria-live="polite">
         <div class="countbox"><strong id="days">—</strong><span>Days</span></div>
         <div class="countbox"><strong id="hours">—</strong><span>Hours</span></div>
         <div class="countbox"><strong id="minutes">—</strong><span>Minutes</span></div>
         <div class="countbox"><strong id="seconds">—</strong><span>Seconds</span></div>
       </div>
-      <p class="small">Countdown is set to the start of 27 January 2027 because the ceremony time has not been provided yet.</p>
+      <p class="note">Countdown currently targets midnight in India. Update the ceremony time in the WEDDING settings when confirmed.</p>
       <div class="actions">
         <button class="btn" id="shareBtn" type="button">Share on WhatsApp</button>
-        <button class="btn secondary" id="calendarBtn" type="button">Add to Calendar</button>
+        <button class="btn outline" id="calendarBtn" type="button">＋ Add to Calendar</button>
       </div>
     </div>
   </section>
 
   <section class="story" id="story">
     <div class="inner">
-      <div class="kicker">A little about us</div><h2>Two hearts, one story</h2>
-      <p class="intro">Our favourite chapter is the one we’re about to begin. Here’s to love, laughter, family, and a lifetime of little moments.</p>
+      <div class="kicker">A little about us</div><h2>Our beautiful journey</h2>
+      <div class="divider">❀</div>
+      <p class="intro">Every love story is special, and ours is bringing two families together for a lifetime of memories.</p>
       <div class="story-grid">
         <img class="story-photo" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1100&q=85" alt="Romantic wedding celebration" loading="lazy">
         <div class="story-copy">
-          <div class="kicker">Our next chapter</div>
-          <h2 style="font-size:2.2rem">Akshay &amp; Prashasti</h2>
-          <p>This space is yours to personalise with how you met, a favourite memory, or a few words for your guests. Replace this sample message with your own story whenever you’re ready.</p>
-          <p>Thank you for being part of our journey. We look forward to celebrating this special day together.</p>
+          <div class="kicker">The next chapter</div>
+          <h3>Akshay & Prashasti</h3>
+          <p>With the blessings of our families and the love of our friends, we are beginning a new chapter together. We would be delighted to have you beside us as we celebrate this special occasion.</p>
+          <p><em>“The best is yet to come.”</em></p>
         </div>
       </div>
     </div>
@@ -97,52 +169,60 @@ footer{text-align:center;padding:34px 18px 42px;color:var(--muted);font-size:.9r
 
   <section id="gallery">
     <div class="inner">
-      <div class="kicker">Moments we love</div><h2>Photo Gallery</h2>
-      <p class="intro">These are sample photos for the layout. Replace them with your own favourite photos before sharing the website.</p>
+      <div class="kicker">Moments we cherish</div><h2>Our Photo Gallery</h2>
+      <div class="divider">❀</div>
+      <p class="intro">A few beautiful moments to celebrate the journey. Replace these sample photographs with your own pictures.</p>
       <div class="gallery">
         <figure><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=900&q=85" alt="Wedding couple outdoors" loading="lazy"><figcaption>THE BEGINNING</figcaption></figure>
-        <figure><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=85" alt="Wedding celebration details" loading="lazy"><figcaption>HAPPY MOMENTS</figcaption></figure>
-        <figure><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=900&q=85" alt="Wedding flowers and details" loading="lazy"><figcaption>FLOWERS &amp; JOY</figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=85" alt="Wedding celebration" loading="lazy"><figcaption>HAPPY MOMENTS</figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=900&q=85" alt="Wedding flowers" loading="lazy"><figcaption>FLOWERS & JOY</figcaption></figure>
       </div>
     </div>
   </section>
 
-  <section id="details">
+  <section class="events-section" id="details">
     <div class="inner">
-      <div class="kicker">The celebration</div><h2>Wedding Day Details</h2>
-      <p class="intro">Please save the date. Event timings and the final venue details will be added here once confirmed.</p>
+      <div class="kicker">The festivities</div><h2>Wedding Celebrations</h2>
+      <div class="divider">❀</div>
+      <p class="intro">Join us for the celebrations. The event schedule below is illustrative; timings and additional functions can be updated once finalised.</p>
       <div class="events">
-        <article class="event"><div class="time">27 January 2027 · Time TBC</div><h3>Wedding Ceremony</h3><p>Join us as we make our promises and begin a new chapter together.</p></article>
-        <article class="event"><div class="time">27 January 2027 · Time TBC</div><h3>Celebration &amp; Meal</h3><p>Good food, warm wishes, and time with family and friends.</p></article>
-        <article class="event"><div class="time">27 January 2027 · Time TBC</div><h3>Photos &amp; Memories</h3><p>Let’s make the day memorable with smiles, laughter, and lots of photos.</p></article>
+        <article class="event"><div class="time">27 January 2027 · Time TBC</div><h3>Haldi & Mehendi</h3><p>Colours, music, laughter and the joyful traditions that make an Indian wedding unforgettable.</p></article>
+        <article class="event"><div class="time">27 January 2027 · Time TBC</div><h3>Wedding Ceremony</h3><p>Join us as we take our vows and begin our forever, surrounded by family and friends.</p></article>
+        <article class="event"><div class="time">27 January 2027 · Time TBC</div><h3>Reception & Dinner</h3><p>An evening of delicious food, warm wishes, music and memories. Let’s celebrate together!</p></article>
       </div>
     </div>
   </section>
 
   <section class="venue" id="venue">
     <div class="inner">
-      <div class="kicker">Join us in Nagpur</div><h2>Choker Dhani, Nagpur</h2>
-      <p class="intro">Venue name and exact address should be confirmed before publishing. The map link searches for Chokhi Dhani in Nagpur.</p>
+      <div class="kicker">We look forward to welcoming you</div><h2>Join us in Nagpur</h2>
+      <div class="divider">❀</div>
+      <p class="intro"><strong>Chokhi Dhani, Nagpur</strong><br>27 January 2027</p>
       <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Chokhi+Dhani+Nagpur" target="_blank" rel="noopener">Open Google Maps ↗</a>
+      <p class="note">Please confirm the venue's official name and exact address before sharing the invitation.</p>
     </div>
   </section>
 </main>
+
 <footer>
-  Made with love for our favourite people <span class="heart">♥</span><br>
-  <strong>Akshay &amp; Prashasti · 27 January 2027</strong>
-  <p class="small">Please confirm event timings and the venue’s official name/address before sending this invitation.</p>
+  Made with love for our favourite people <span class="heart">♥</span>
+  <strong>Akshay & Prashasti · 27 January 2027</strong>
+  <div style="font-family:Poppins,sans-serif;font-size:.68rem;margin-top:12px;color:#d8c3a4">With love and blessings · Shubh Vivah</div>
 </footer>
+
 <audio id="weddingMusic" src="music.mp3" loop preload="none"></audio>
 <script>
+/* Update these values when the ceremony schedule and venue are confirmed. */
 const WEDDING = {
   names: "Akshay & Prashasti",
   date: "2027-01-27",
   dateLabel: "27 January 2027",
-  venue: "Choker Dhani, Nagpur",
+  venue: "Chokhi Dhani, Nagpur",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Chokhi+Dhani+Nagpur",
-  startTime: "00:00:00", // placeholder: change when ceremony time is confirmed
-  timeZoneOffset: "+05:30" // Nagpur, India
+  startTime: "00:00:00",
+  timeZoneOffset: "+05:30"
 };
+
 const weddingMoment = new Date(`${WEDDING.date}T${WEDDING.startTime}${WEDDING.timeZoneOffset}`).getTime();
 function updateCountdown(){
   const diff = Math.max(0, weddingMoment - Date.now());
@@ -151,40 +231,55 @@ function updateCountdown(){
   document.getElementById("minutes").textContent = Math.floor((diff % 3600000) / 60000);
   document.getElementById("seconds").textContent = Math.floor((diff % 60000) / 1000);
 }
-updateCountdown(); setInterval(updateCountdown, 1000);
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
-const invitationText = () => `You're invited to celebrate Akshay & Prashasti's wedding!\nDate: 27 January 2027\nVenue: Choker Dhani, Nagpur (please confirm official venue name/address)\n${location.href}`;
+function invitationText(){
+  return `You're invited to celebrate ${WEDDING.names}' wedding!\n\nDate: ${WEDDING.dateLabel}\nVenue: ${WEDDING.venue}\n\nWe look forward to celebrating with you!\n${window.location.href}`;
+}
 document.getElementById("shareBtn").addEventListener("click", () => {
-  const url = "https://wa.me/?text=" + encodeURIComponent(invitationText());
-  window.open(url, "_blank", "noopener");
+  window.open("https://wa.me/?text=" + encodeURIComponent(invitationText()), "_blank", "noopener");
 });
 
 document.getElementById("calendarBtn").addEventListener("click", () => {
-  // All-day calendar event avoids inventing a ceremony time.
   const ics = [
     "BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Akshay and Prashasti//Wedding Invitation//EN",
     "CALSCALE:GREGORIAN","BEGIN:VEVENT","UID:akshay-prashasti-wedding-20270127@invitation",
-    "DTSTAMP:20260101T000000Z","DTSTART;VALUE=DATE:20270127","DTEND;VALUE=DATE:20270128",
-    "SUMMARY:Akshay & Prashasti Wedding","LOCATION:Choker Dhani, Nagpur",
+    "DTSTAMP:20261101T000000Z","DTSTART;VALUE=DATE:20270127","DTEND;VALUE=DATE:20270128",
+    "SUMMARY:Akshay & Prashasti Wedding","LOCATION:Chokhi Dhani, Nagpur",
     "DESCRIPTION:Wedding invitation. Please confirm venue details and ceremony time.",
     "END:VEVENT","END:VCALENDAR"
   ].join("\r\n");
   const blob = new Blob([ics], {type:"text/calendar;charset=utf-8"});
   const url = URL.createObjectURL(blob);
-  const a = document.createElement("a"); a.href = url; a.download = "Akshay-Prashasti-Wedding.ics";
-  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  const link = document.createElement("a");
+  link.href = url; link.download = "Akshay-Prashasti-Wedding.ics";
+  document.body.appendChild(link); link.click(); link.remove();
+  URL.revokeObjectURL(url);
 });
 
 const music = document.getElementById("weddingMusic");
 const musicToggle = document.getElementById("musicToggle");
 musicToggle.addEventListener("click", async () => {
   if (music.paused) {
-    try { await music.play(); musicToggle.textContent = "♫ Music: On"; musicToggle.setAttribute("aria-pressed","true"); }
-    catch(e) { alert("Add your licensed music file named music.mp3 beside index.html, then try again."); }
+    try {
+      await music.play();
+      musicToggle.textContent = "♫ Music: On";
+      musicToggle.setAttribute("aria-pressed","true");
+    } catch(error) {
+      alert("Add your licensed music file named music.mp3 beside index.html, then try again.");
+    }
   } else {
-    music.pause(); musicToggle.textContent = "♫ Music: Off"; musicToggle.setAttribute("aria-pressed","false");
+    music.pause();
+    musicToggle.textContent = "♫ Music: Off";
+    musicToggle.setAttribute("aria-pressed","false");
   }
 });
 </script>
 </body>
 </html>
+'''
+
+path = Path("/mnt/data/akshay_prashasti_indian_wedding_invitation.html")
+path.write_text(html, encoding="utf-8")
+print(f"Created {path} ({path.stat().st_size:,} bytes)")
