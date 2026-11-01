@@ -73,4 +73,477 @@ files["index.html"] = r'''<!doctype html>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <title>Ranbir weds Alia | Wedding Invitation</title>
+  </head>
+  <body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body>
+</html>'''
+files["public/favicon.svg"] = r'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="32" fill="#6E1F2E"/><path d="M32 10c-4 7-4 12 0 16 4-4 4-9 0-16ZM15 31h34v5H15zm5 7h24v5H20zm-7 8h38v5H13z" fill="none" stroke="#B5965A" stroke-width="2"/><path d="M25 51V38h14v13" fill="none" stroke="#B5965A" stroke-width="2"/></svg>'''
+files["vite.config.ts"] = r'''import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+export default defineConfig({ plugins: [react()] });'''
+files["tsconfig.json"] = r'''{"files":[],"references":[{"path":"./tsconfig.app.json"},{"path":"./tsconfig.node.json"}]}'''
+files["tsconfig.app.json"] = r'''{"compilerOptions":{"tsBuildInfoFile":"./node_modules/.tmp/tsconfig.app.tsbuildinfo","target":"ES2020","useDefineForClassFields":true,"lib":["ES2020","DOM","DOM.Iterable"],"module":"ESNext","skipLibCheck":true,"moduleResolution":"bundler","allowImportingTsExtensions":true,"resolveJsonModule":true,"isolatedModules":true,"noEmit":true,"jsx":"react-jsx","strict":true,"noUnusedLocals":false,"noUnusedParameters":false},"include":["src"]}'''
+files["tsconfig.node.json"] = r'''{"compilerOptions":{"tsBuildInfoFile":"./node_modules/.tmp/tsconfig.node.tsbuildinfo","target":"ES2022","lib":["ES2023"],"module":"ESNext","skipLibCheck":true,"moduleResolution":"bundler","allowImportingTsExtensions":true,"verbatimModuleSyntax":true,"moduleDetection":"force","noEmit":true,"strict":true},"include":["vite.config.ts"]}'''
+files["postcss.config.js"] = r'''export default { plugins: { tailwindcss: {}, autoprefixer: {} } };'''
+files["tailwind.config.js"] = r'''/** @type {import('tailwindcss').Config} */
+export default { content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"], theme: { extend: { colors: { ivory: "#F8F0E3", paper: "#FFF9EF", maroon: "#6E1F2E", wine: "#42131E", gold: "#B5965A", brown: "#291C1A" }, fontFamily: { display: ["Playfair Display", "serif"], elegant: ["Italiana", "serif"], sans: ["DM Sans", "sans-serif"] } } }, plugins: [] };'''
+files["src/data/weddingData.ts"] = r'''export const weddingData = {
+  couple: { groom: "Ranbir", bride: "Alia", display: "Ranbir weds Alia", hashtag: "#RanbirWedsAlia" },
+  date: { iso: "2027-01-31T18:00:00+05:30", label: "31 January 2027", weekday: "Sunday", year: "2027" },
+  families: { groom: "The Kapoor Family", bride: "The Bhatt Family" },
+  blessing: "With the blessings of our elders and the love of our families,",
+  invitationLine: "request the pleasure of your company as we begin our forever.",
+  venue: { name: "Enter Your Venue Name", address: "Enter your venue address, city", mapUrl: "https://maps.google.com/?q=India" },
+  contact: { name: "Wedding Coordination", phone: "+91 00000 00000", email: "hello@example.com" },
+  events: [
+    { title: "Mehndi", date: "30 January 2027", time: "4:00 PM onwards", place: "The Garden Courtyard", description: "An afternoon of intricate henna, colour, music and joyful beginnings.", dress: "Festive hues · Indian attire" },
+    { title: "Sangeet Night", date: "30 January 2027", time: "7:30 PM onwards", place: "The Celebration Hall", description: "A night of music, dance and unforgettable family performances.", dress: "Evening glamour · Indian formal" },
+    { title: "Wedding", date: "31 January 2027", time: "6:00 PM · Muhurat to be confirmed", place: "The Wedding Mandap", description: "Join us as we exchange vows and begin our journey together.", dress: "Traditional · Festive" }
+  ],
+  story: {
+    heading: "Two stories, one beautiful beginning",
+    text: "Some meetings feel written in the stars. We are grateful for every little moment that brought us here, and cannot wait to celebrate the next chapter with you."
+  },
+  gallery: [
+    { src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85", alt: "A romantic wedding celebration" },
+    { src: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1200&q=85", alt: "Wedding couple in a garden" },
+    { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85", alt: "Celebratory wedding moment" }
+  ],
+  instagram: { hashtag: "#RanbirWedsAlia", url: "https://www.instagram.com/" },
+  video: { youtubeId: "ysz5S6PUM-U", title: "A little glimpse of our journey" },
+  music: { src: "/wedding-music.mp3", title: "Wedding ambience" },
+  rsvp: { deadline: "Please reply by 10 January 2027", email: "hello@example.com" }
+} as const;
+'''
+files["src/main.tsx"] = r'''import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./styles.css";
+ReactDOM.createRoot(document.getElementById("root")!).render(<React.StrictMode><App /></React.StrictMode>);'''
+files["src/components/Reveal.tsx"] = r'''import { motion, useReducedMotion } from "framer-motion";
+import type { ReactNode } from "react";
+export function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+  const reduce = useReducedMotion();
+  return <motion.div className={className} initial={reduce ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.16 }} transition={{ duration: reduce ? 0 : 0.7, delay, ease: [0.22, 1, 0.36, 1] }}>{children}</motion.div>;
+}
+export function SectionHeading({ eyebrow, title, light = false }: { eyebrow: string; title: string; light?: boolean }) {
+  return <div className={`section-heading ${light ? "light" : ""}`}><span className="eyebrow">{eyebrow}</span><h2>{title}</h2><span className="ornament-rule" aria-hidden="true">✦</span></div>;
+}'''
+files["src/components/Hero.tsx"] = r'''import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { weddingData } from "../data/weddingData";
+export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const scale = useTransform(scrollYProgress, [0, 0.8], [1, 1.45]);
+  const leftX = useTransform(scrollYProgress, [0.12, 0.72], ["0%", "-78%"]);
+  const rightX = useTransform(scrollYProgress, [0.12, 0.72], ["0%", "78%"]);
+  const opacity = useTransform(scrollYProgress, [0.68, 1], [1, 0]);
+  return <section ref={ref} className="hero" aria-label="Wedding invitation cover">
+    <div className="hero-sky" />
+    <div className="cloud cloud-one" /><div className="cloud cloud-two" /><div className="cloud cloud-three" />
+    <div className="hero-copy">
+      <p className="hero-kicker">A celebration of love</p>
+      <h1>{weddingData.couple.groom}<em> weds </em>{weddingData.couple.bride}</h1>
+      <p className="hero-date">{weddingData.date.label}</p>
+    </div>
+    <motion.div className="temple-stage" style={reduce ? { opacity: 1 } : { scale, opacity }}>
+      <motion.div className="temple-half temple-left" style={reduce ? {} : { x: leftX }}>
+        <img src="/temple-mandap.png" alt="" fetchPriority="high" />
+      </motion.div>
+      <motion.div className="temple-half temple-right" style={reduce ? {} : { x: rightX }}>
+        <img src="/temple-mandap.png" alt="Ornate Indian temple mandap" fetchPriority="high" />
+      </motion.div>
+      <motion.div className="portal-glow" style={reduce ? { opacity: 0 } : { opacity: useTransform(scrollYProgress, [0.18, 0.48, 0.72], [0, 0.9, 0]) }} />
+    </motion.div>
+    <div className="scroll-cue"><span>Scroll to explore</span><i /></div>
+  </section>;
+}'''
+files["src/components/Invitation.tsx"] = r'''import { Flower2 } from "lucide-react";
+import { weddingData } from "../data/weddingData";
+import { Reveal, SectionHeading } from "./Reveal";
+export default function Invitation() {
+  return <section className="invitation section-pad" id="invitation">
+    <Reveal><SectionHeading eyebrow="With the blessings of Lord Ganesha" title="A sacred beginning" />
+      <div className="ganesh-mark" aria-label="Auspicious floral motif"><Flower2 size={34} strokeWidth={1} /><span>ॐ</span></div>
+      <p className="family-line">{weddingData.families.groom} <span>and</span> {weddingData.families.bride}</p>
+      <p className="invite-word">Invite</p>
+      <p className="invitation-copy">{weddingData.blessing}<br />{weddingData.invitationLine}</p>
+      <h2 className="couple-script">{weddingData.couple.groom} <small>&</small> {weddingData.couple.bride}</h2>
+      <p className="date-stamp">{weddingData.date.weekday} · {weddingData.date.label}</p>
+    </Reveal>
+  </section>;
+}'''
+files["src/components/DateReveal.tsx"] = r'''import { useState } from "react";
+import { CalendarDays, Sparkles } from "lucide-react";
+import { weddingData } from "../data/weddingData";
+import { Reveal, SectionHeading } from "./Reveal";
+export default function DateReveal() {
+  const [open, setOpen] = useState(false);
+  return <section className="date-reveal section-pad">
+    <Reveal><SectionHeading eyebrow="A date to hold close" title="The day our forever begins" />
+      <button className={`date-seal ${open ? "is-open" : ""}`} onClick={() => setOpen(v => !v)} aria-expanded={open} aria-label="Reveal wedding date">
+        <span className="seal-top"><Sparkles size={18} /> A little something special</span><strong>{open ? "31" : "?"}</strong><span className="seal-bottom">{open ? "JANUARY · 2027" : "TAP TO REVEAL"}</span>
+      </button>
+      {open && <p className="revealed-date"><CalendarDays size={18} /> {weddingData.date.weekday}, {weddingData.date.label}</p>}
+    </Reveal>
+  </section>;
+}'''
+files["src/components/Functions.tsx"] = r'''import { Clock3, MapPin } from "lucide-react";
+import { weddingData } from "../data/weddingData";
+import { Reveal, SectionHeading } from "./Reveal";
+export default function Functions() {
+  return <section className="functions section-pad" id="celebrations"><div className="container">
+    <Reveal><SectionHeading eyebrow="Three moments, one celebration" title="The Celebrations" light /></Reveal>
+    <div className="event-grid">{weddingData.events.map((event, i) => <Reveal delay={i * .1} key={event.title}>
+      <article className="event-card"><span className="event-index">0{i + 1}</span><span className="event-flower">✺</span><h3>{event.title}</h3><p className="event-date">{event.date}</p><p className="event-time"><Clock3 size={14} /> {event.time}</p><p>{event.description}</p><p className="event-place"><MapPin size={14} /> {event.place}</p><span className="dress-note">{event.dress}</span></article>
+    </Reveal>)}</div>
+  </div></section>;
+}'''
+files["src/components/Carousel.tsx"] = r'''import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { weddingData } from "../data/weddingData";
+export default function Carousel() {
+  const [index, setIndex] = useState(0);
+  const item = weddingData.gallery[index];
+  const change = (step: number) => setIndex(i => (i + step + weddingData.gallery.length) % weddingData.gallery.length);
+  return <div className="carousel">
+    <button className="carousel-arrow prev" onClick={() => change(-1)} aria-label="Previous photograph"><ChevronLeft /></button>
+    <figure><img src={item.src} alt={item.alt} loading="lazy" /><figcaption>{String(index + 1).padStart(2, "0")} <span>/</span> {String(weddingData.gallery.length).padStart(2, "0")}</figcaption></figure>
+    <button className="carousel-arrow next" onClick={() => change(1)} aria-label="Next photograph"><ChevronRight /></button>
+    <div className="carousel-dots">{weddingData.gallery.map((_, i) => <button key={i} aria-label={`Show photograph ${i + 1}`} aria-current={i === index} onClick={() => setIndex(i)} />)}</div>
+  </div>;
+}'''
+files["src/components/Couple.tsx"] = r'''import Carousel from "./Carousel";
+import { weddingData } from "../data/weddingData";
+import { Reveal, SectionHeading } from "./Reveal";
+export default function Couple() {
+  return <section className="couple-section section-pad" id="story"><div className="container">
+    <Reveal><SectionHeading eyebrow="The people behind the promise" title="A story still unfolding" /></Reveal>
+    <div className="couple-layout"><Reveal className="couple-text"><p className="script-small">A note from us</p><h3>{weddingData.story.heading}</h3><p>{weddingData.story.text}</p><p className="signature">{weddingData.couple.groom} & {weddingData.couple.bride}</p></Reveal><Reveal delay={.12}><Carousel /></Reveal></div>
+  </div></section>;
+}'''
+files["src/components/Instagram.tsx"] = r'''import { Instagram as InstagramIcon } from "lucide-react";
+import { weddingData } from "../data/weddingData";
+import { Reveal } from "./Reveal";
+export default function Instagram() {
+  return <section className="instagram-section section-pad"><Reveal><InstagramIcon size={25} strokeWidth={1.3} /><p className="eyebrow">Share the joy</p><h2>Our celebration, through your eyes</h2><a href={weddingData.instagram.url} target="_blank" rel="noreferrer">{weddingData.instagram.hashtag}</a><p>Tag your photographs with our wedding hashtag so we can relive every lovely moment.</p></Reveal></section>;
+}'''
+files["src/components/Video.tsx"] = r'''import { Play } from "lucide-react";
+import { weddingData } from "../data/weddingData";
+import { Reveal, SectionHeading } from "./Reveal";
+export default function Video() {
+  return <section className="video-section section-pad"><div className="container"><Reveal><SectionHeading eyebrow="A little preview" title={weddingData.video.title} />
+    <div className="video-frame"><iframe src={`https://www.youtube-nocookie.com/embed/${weddingData.video.youtubeId}`} title="Pre-wedding film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /><span className="video-corner"><Play size={15} /></span></div>
+  </Reveal></div></section>;
+}'''
+files["src/components/Countdown.tsx"] = r'''import { useEffect, useState } from "react";
+import { weddingData } from "../data/weddingData";
+import { Reveal } from "./Reveal";
+type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
+function getTime(): TimeLeft {
+  const distance = Math.max(0, new Date(weddingData.date.iso).getTime() - Date.now());
+  return { days: Math.floor(distance / 86400000), hours: Math.floor(distance / 3600000) % 24, minutes: Math.floor(distance / 60000) % 60, seconds: Math.floor(distance / 1000) % 60 };
+}
+export default function Countdown() {
+  const [time, setTime] = useState(getTime);
+  useEffect(() => { const id = window.setInterval(() => setTime(getTime()), 1000); return () => window.clearInterval(id); }, []);
+  return <section className="countdown-section section-pad"><Reveal><p className="eyebrow">Counting every little moment</p><h2>Until we say “I do”</h2><div className="count-grid">{Object.entries(time).map(([unit, value]) => <div key={unit}><strong>{String(value).padStart(2, "0")}</strong><span>{unit}</span></div>)}</div></Reveal></section>;
+}'''
+files["src/components/ThingsToKnow.tsx"] = r'''import { MapPinned, Phone, BellRing } from "lucide-react";
+import { weddingData } from "../data/weddingData";
+import { Reveal, SectionHeading } from "./Reveal";
+export default function ThingsToKnow() {
+  return <section className="things section-pad"><div className="container"><Reveal><SectionHeading eyebrow="A few helpful details" title="Things to Know" /></Reveal>
+    <div className="things-grid">
+      <Reveal><article><MapPinned /><h3>The Venue</h3><p>{weddingData.venue.name}</p><small>{weddingData.venue.address}</small><a href={weddingData.venue.mapUrl} target="_blank" rel="noreferrer">View directions ↗</a></article></Reveal>
+      <Reveal delay={.1}><article><Phone /><h3>Need a hand?</h3><p>{weddingData.contact.name}</p><small>{weddingData.contact.phone}</small><a href={`mailto:${weddingData.contact.email}`}>Get in touch ↗</a></article></Reveal>
+      <Reveal delay={.2}><article><BellRing /><h3>A gentle reminder</h3><p>Keep the date close</p><small>{weddingData.date.label}</small><a href="#rsvp">Send your RSVP ↗</a></article></Reveal>
+    </div>
+  </div></section>;
+}'''
+files["src/components/RSVP.tsx"] = r'''import { FormEvent, useState } from "react";
+import { CheckCircle2 } from "lucide-react";
+import { weddingData } from "../data/weddingData";
+import { Reveal, SectionHeading } from "./Reveal";
+export default function RSVP() {
+  const [choice, setChoice] = useState<"yes" | "no" | "">("");
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
+  function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault(); setError("");
+    const form = new FormData(e.currentTarget);
+    const name = String(form.get("name") || "").trim();
+    const email = String(form.get("email") || "").trim();
+    const guests = String(form.get("guests") || "1");
+    if (!choice) { setError("Please choose whether you can join us."); return; }
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError("Please enter your name and a valid email address."); return; }
+    const details = { name, email, guests: choice === "yes" ? guests : "0", attending: choice, submittedAt: new Date().toISOString() };
+    const existing = JSON.parse(localStorage.getItem("wedding-rsvps") || "[]");
+    localStorage.setItem("wedding-rsvps", JSON.stringify([...existing, details]));
+    setSent(true);
+  }
+  return <section className="rsvp-section section-pad" id="rsvp"><div className="container"><Reveal><SectionHeading eyebrow="Kindly reply" title="Will you join us?" />
+    <p className="rsvp-deadline">{weddingData.rsvp.deadline}</p>
+    {sent ? <div className="success-message" role="status"><CheckCircle2 /><h3>Thank you for replying</h3><p>Your response has been saved on this device.</p></div> :
+    <form className="rsvp-form" onSubmit={submit} noValidate>
+      <div className="attendance-options"><button type="button" className={choice === "yes" ? "selected" : ""} onClick={() => setChoice("yes")} aria-pressed={choice === "yes"}>Joyfully accepts</button><button type="button" className={choice === "no" ? "selected" : ""} onClick={() => setChoice("no")} aria-pressed={choice === "no"}>Regretfully declines</button></div>
+      <label>Your full name<input name="name" autoComplete="name" required placeholder="Name" /></label>
+      <label>Email address<input name="email" type="email" autoComplete="email" required placeholder="you@example.com" /></label>
+      {choice === "yes" && <label>Number of guests<select name="guests" defaultValue="1"><option value="1">1 guest</option><option value="2">2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option></select></label>}
+      {error && <p className="form-error" role="alert">{error}</p>}
+      <button className="button button-dark" type="submit">Send RSVP</button>
+      <p className="privacy-note">This demo stores RSVP responses locally in this browser. Connect a form service or backend to receive replies from guests.</p>
+    </form>}
+  </Reveal></div></section>;
+}'''
+files["src/components/Wishes.tsx"] = r'''import { FormEvent, useEffect, useState } from "react";
+import { Send } from "lucide-react";
+import { Reveal, SectionHeading } from "./Reveal";
+type Wish = { name: string; message: string; date: string };
+export default function Wishes() {
+  const [wishes, setWishes] = useState<Wish[]>([]);
+  useEffect(() => { try { setWishes(JSON.parse(localStorage.getItem("wedding-wishes") || "[]")); } catch { setWishes([]); } }, []);
+  function addWish(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault(); const data = new FormData(e.currentTarget);
+    const name = String(data.get("name") || "").trim(), message = String(data.get("message") || "").trim();
+    if (!name || !message) return;
+    const next = [{ name, message, date: new Date().toLocaleDateString() }, ...wishes].slice(0, 30);
+    setWishes(next); localStorage.setItem("wedding-wishes", JSON.stringify(next)); e.currentTarget.reset();
+  }
+  return <section className="wishes-section section-pad"><div className="container"><Reveal><SectionHeading eyebrow="Leave a little love" title="The Wishes Wall" />
+    <form className="wish-form" onSubmit={addWish}><label className="sr-only" htmlFor="wish-name">Your name</label><input id="wish-name" name="name" placeholder="Your name" maxLength={50} required /><label className="sr-only" htmlFor="wish-message">Your wedding wish</label><textarea id="wish-message" name="message" placeholder="Write a wish for the couple…" rows={3} maxLength={300} required /><button className="button button-dark" type="submit"><Send size={15} /> Leave a wish</button></form>
+    <div className="wish-wall" aria-live="polite">{wishes.length ? wishes.map((wish, i) => <article key={`${wish.date}-${i}`}><span>“</span><p>{wish.message}</p><small>{wish.name} · {wish.date}</small></article>) : <p className="empty-wishes">Your warm wishes will find a home here.</p>}</div>
+    <p className="privacy-note">Wishes are saved in this browser using localStorage and are not shared with other visitors.</p>
+  </Reveal></div></section>;
+}'''
+files["src/components/MusicPlayer.tsx"] = r'''import { useRef, useState } from "react";
+import { Music2, VolumeX } from "lucide-react";
+import { weddingData } from "../data/weddingData";
+export default function MusicPlayer() {
+  const audio = useRef<HTMLAudioElement>(null);
+  const [playing, setPlaying] = useState(false);
+  async function toggle() {
+    if (!audio.current) return;
+    if (playing) { audio.current.pause(); setPlaying(false); }
+    else { try { await audio.current.play(); setPlaying(true); } catch { setPlaying(false); } }
+  }
+  return <div className="music-control"><audio ref={audio} src={weddingData.music.src} loop preload="none" onPause={() => setPlaying(false)} /><button onClick={toggle} aria-label={playing ? "Pause wedding music" : "Play wedding music"} title={playing ? "Pause music" : "Play music"}>{playing ? <VolumeX size={17} /> : <Music2 size={17} />}<span>{playing ? "Pause" : "Music"}</span></button></div>;
+}'''
+files["src/components/Footer.tsx"] = r'''import { Heart } from "lucide-react";
+import { weddingData } from "../data/weddingData";
+export default function Footer() {
+  return <footer className="footer"><span className="footer-flower">✺</span><p>With love, laughter & blessings</p><h2>{weddingData.couple.groom} <i>&</i> {weddingData.couple.bride}</h2><small>{weddingData.date.label} · {weddingData.venue.name}</small><div className="footer-bottom">Made with <Heart size={12} fill="currentColor" /> and a little bit of magic</div></footer>;
+}'''
+files["src/App.tsx"] = r'''import Hero from "./components/Hero";
+import Invitation from "./components/Invitation";
+import DateReveal from "./components/DateReveal";
+import Functions from "./components/Functions";
+import Couple from "./components/Couple";
+import Instagram from "./components/Instagram";
+import Video from "./components/Video";
+import Countdown from "./components/Countdown";
+import ThingsToKnow from "./components/ThingsToKnow";
+import RSVP from "./components/RSVP";
+import Wishes from "./components/Wishes";
+import MusicPlayer from "./components/MusicPlayer";
+import Footer from "./components/Footer";
+export default function App() {
+  return <><a className="skip-link" href="#invitation">Skip to invitation</a><MusicPlayer /><main><Hero /><Invitation /><DateReveal /><Functions /><Couple /><Instagram /><Video /><Countdown /><ThingsToKnow /><RSVP /><Wishes /></main><Footer /></>;
+}'''
+files["src/styles.css"] = r'''@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{font-family:"DM Sans",sans-serif;color:#291C1A;background:#F8F0E3;font-synthesis:none;text-rendering:optimizeLegibility}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-width:320px;background:#F8F0E3}
+button,input,textarea,select{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+a{color:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid #B5965A;outline-offset:4px}
+.skip-link{position:fixed;top:-60px;left:12px;z-index:100;background:#fff9ef;padding:12px}.skip-link:focus{top:12px}
+.container{width:min(1120px,calc(100% - 44px));margin-inline:auto}
+.section-pad{padding:104px 0}
+.eyebrow{display:block;font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:#9b7a45;font-weight:600}
+.section-heading{text-align:center;margin:0 auto 42px}
+.section-heading h2,.instagram-section h2,.countdown-section h2{font-family:"Playfair Display",serif;font-size:clamp(2.1rem,5vw,3.45rem);font-weight:400;line-height:1.18;color:#42131E;margin:13px 0}
+.ornament-rule{display:inline-flex;align-items:center;gap:12px;color:#B5965A;font-size:.8rem}
+.ornament-rule:before,.ornament-rule:after{content:"";width:48px;height:1px;background:#B5965A}
+.hero{height:100svh;min-height:620px;position:relative;overflow:hidden;background:#76bce9;isolation:isolate}
+.hero-sky{position:absolute;inset:0;background:linear-gradient(180deg,#6db5e6 0%,#a9d8f0 55%,#e7f2f2 100%);z-index:-2}
+.cloud{position:absolute;width:280px;height:62px;background:#fff;border-radius:100px;filter:blur(1px);opacity:.78;top:24%}
+.cloud:before,.cloud:after{content:"";position:absolute;background:#fff;border-radius:50%}
+.cloud:before{width:100px;height:100px;left:42px;bottom:8px}.cloud:after{width:140px;height:130px;right:40px;bottom:0}
+.cloud-one{left:-70px;transform:scale(.8)}.cloud-two{right:-55px;top:40%;transform:scale(.65)}.cloud-three{left:32%;top:13%;transform:scale(.42);opacity:.55}
+.hero-copy{position:absolute;top:10%;left:20px;right:20px;text-align:center;z-index:3;color:#fff;text-shadow:0 2px 18px #28516c30}
+.hero-kicker{font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;margin:0 0 18px}
+.hero h1{font-family:"Italiana","Playfair Display",serif;font-size:clamp(3.2rem,9.5vw,7.8rem);font-weight:400;line-height:1.05;margin:0}
+.hero h1 em{font-size:.48em;font-style:italic;white-space:nowrap}
+.hero-date{font-family:"Playfair Display",serif;font-size:clamp(1rem,2.2vw,1.35rem);letter-spacing:.1em;margin-top:22px}
+.temple-stage{position:absolute;z-index:2;bottom:-3%;left:50%;width:min(1000px,100vw);height:69%;transform-origin:50% 90%;translate:-50% 0;display:flex;align-items:flex-end;justify-content:center;pointer-events:none}
+.temple-half{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;will-change:transform}
+.temple-half img{position:absolute;bottom:0;left:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;max-height:100%;filter:drop-shadow(0 10px 14px #253b4540)}
+.temple-left{clip-path:inset(0 50% 0 0)}.temple-right{clip-path:inset(0 0 0 50%)}
+.portal-glow{position:absolute;top:35%;left:50%;width:26%;height:58%;transform:translateX(-50%);background:radial-gradient(ellipse,#fff4cf 0%,#ffe6a477 34%,transparent 72%);filter:blur(16px);z-index:-1;pointer-events:none}
+.scroll-cue{position:absolute;z-index:4;bottom:22px;left:0;right:0;text-align:center;color:#fff;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;text-shadow:0 1px 8px #28516c}
+.scroll-cue i{display:block;width:1px;height:28px;background:#fff;margin:10px auto 0;opacity:.8}
+.invitation{background:#FFF9EF;text-align:center;position:relative;overflow:hidden}
+.invitation:before,.invitation:after{content:"❧";position:absolute;color:#b5965a24;font-size:10rem;top:12%;font-family:serif}.invitation:before{left:-25px}.invitation:after{right:-25px;transform:scaleX(-1)}
+.ganesh-mark{width:72px;height:72px;border:1px solid #B5965A;border-radius:50%;display:grid;place-items:center;margin:0 auto 28px;color:#9d7540;position:relative}
+.ganesh-mark span{position:absolute;font-family:serif;font-size:1rem;background:#FFF9EF;padding:0 4px;bottom:-8px}
+.family-line{font-family:"Playfair Display",serif;color:#6e5550;font-size:1.05rem}.family-line span{color:#B5965A;font-style:italic;padding:0 8px}
+.invite-word{font-family:"Italiana",serif;font-size:2rem;color:#B5965A;margin:30px 0 10px}
+.invitation-copy{font-family:"Playfair Display",serif;font-size:1.05rem;line-height:1.9;color:#6a5550}
+.couple-script{font-family:"Italiana",serif;font-size:clamp(3rem,8vw,6rem);font-weight:400;color:#6E1F2E;margin:28px 0 12px}
+.couple-script small{font-family:"Playfair Display",serif;font-size:.5em;color:#B5965A;font-style:italic}
+.date-stamp{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#8d7049}
+.date-reveal{background:#F4EADB;text-align:center}
+.date-seal{width:190px;height:190px;border:1px solid #B5965A;outline:1px solid #B5965A;outline-offset:7px;border-radius:50%;background:#FFF9EF;color:#6E1F2E;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin:30px auto 0;transition:transform .35s,background .35s}
+.date-seal:hover{transform:scale(1.035)}.date-seal.is-open{background:#6E1F2E;color:#FFF9EF}
+.date-seal strong{font-family:"Italiana",serif;font-size:4.5rem;font-weight:400;line-height:1}
+.seal-top,.seal-bottom{font-size:.53rem;letter-spacing:.15em;text-transform:uppercase}.revealed-date{display:flex;justify-content:center;align-items:center;gap:8px;color:#6E1F2E;margin-top:26px;font-family:"Playfair Display",serif}
+.functions{background:#42131E;color:#FFF9EF;position:relative}
+.functions:before{content:"";position:absolute;inset:18px;border:1px solid #b5965a50;pointer-events:none}
+.section-heading.light h2{color:#FFF9EF}.section-heading.light .eyebrow{color:#d1b77f}
+.event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.event-card{height:100%;padding:30px 26px;border:1px solid #b5965a8c;text-align:center;position:relative;background:#ffffff06}
+.event-index{position:absolute;top:14px;left:16px;font-family:"Playfair Display",serif;font-size:.75rem;color:#b5965a}
+.event-flower{display:block;color:#b5965a;font-size:1.8rem;margin:6px}
+.event-card h3{font-family:"Playfair Display",serif;font-weight:400;font-size:1.8rem;color:#f4e6c9;margin:10px 0}
+.event-date{font-size:.72rem;color:#d7bd8c;letter-spacing:.08em}
+.event-card p:not(.event-date){font-size:.8rem;line-height:1.8;color:#e6d8c9}
+.event-time,.event-place{display:flex;justify-content:center;align-items:center;gap:7px}
+.dress-note{display:block;border-top:1px solid #b5965a50;padding-top:16px;margin-top:20px;font-size:.65rem;letter-spacing:.1em;color:#d7bd8c}
+.couple-section{background:#FFF9EF}
+.couple-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}
+.couple-text{padding:20px 0}.script-small{font-family:"Italiana",serif;font-size:1.8rem;color:#B5965A;margin:0}
+.couple-text h3{font-family:"Playfair Display",serif;font-size:2rem;line-height:1.3;font-weight:400;color:#42131E}
+.couple-text>p:not(.script-small):not(.signature){font-size:.9rem;line-height:2;color:#78645d}
+.signature{font-family:"Italiana",serif;color:#6E1F2E;font-size:1.9rem}
+.carousel{position:relative;padding:0 42px 34px}
+.carousel figure{margin:0;background:#f2e6d4;padding:10px 10px 25px;box-shadow:0 16px 45px #42131e18}
+.carousel img{display:block;width:100%;height:420px;object-fit:cover}
+.carousel figcaption{text-align:right;padding:12px 8px 0;font-family:"Playfair Display",serif;color:#6E1F2E;font-size:.8rem}
+.carousel figcaption span{color:#B5965A;padding:0 5px}
+.carousel-arrow{position:absolute;top:48%;z-index:2;width:38px;height:38px;border:1px solid #B5965A;background:#FFF9EF;color:#6E1F2E;border-radius:50%;display:grid;place-items:center}
+.carousel-arrow.prev{left:0}.carousel-arrow.next{right:0}
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
+.carousel-dots button{width:6px;height:6px;border:0;border-radius:50%;background:#cdbb9b;padding:0}
+.carousel-dots button[aria-current=true]{background:#6E1F2E;transform:scale(1.35)}
+.instagram-section{text-align:center;background:#F1E5D4}
+.instagram-section>div>svg{color:#8e6c3e;margin-bottom:15px}
+.instagram-section h2{font-size:clamp(1.8rem,4vw,2.8rem)}
+.instagram-section a{font-family:"Playfair Display",serif;font-size:2rem;color:#6E1F2E;text-decoration:none;border-bottom:1px solid #B5965A;padding-bottom:5px}
+.instagram-section p:last-child{max-width:480px;margin:22px auto 0;color:#78645d;font-size:.82rem;line-height:1.8}
+.video-section{background:#FFF9EF}
+.video-frame{position:relative;width:min(850px,100%);margin:0 auto;aspect-ratio:16/9;background:#42131E;padding:8px}
+.video-frame iframe{width:100%;height:100%;border:0}.video-corner{position:absolute;right:18px;bottom:18px;color:#fff;background:#6E1F2E;padding:9px;pointer-events:none}
+.countdown-section{text-align:center;background:#6E1F2E;color:#FFF9EF}
+.countdown-section .eyebrow{color:#d9c18f}.countdown-section h2{color:#FFF9EF}
+.count-grid{display:flex;justify-content:center;gap:clamp(14px,4vw,55px);margin-top:38px}
+.count-grid div{min-width:68px;display:flex;flex-direction:column;gap:7px}
+.count-grid strong{font-family:"Italiana",serif;font-size:clamp(2.8rem,7vw,5rem);font-weight:400;color:#f4e7ca}
+.count-grid span{font-size:.6rem;text-transform:uppercase;letter-spacing:.18em;color:#d9c18f}
+.things{background:#F4EADB}
+.things-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.things-grid article{height:100%;text-align:center;padding:30px 22px;background:#FFF9EF;border:1px solid #d9c7a8}
+.things-grid svg{color:#B5965A;stroke-width:1.4}
+.things-grid h3{font-family:"Playfair Display",serif;font-size:1.4rem;font-weight:400;color:#42131E}
+.things-grid p{margin:8px 0;color:#6E1F2E;font-size:.88rem}.things-grid small{display:block;color:#806d62;font-size:.75rem;line-height:1.6}
+.things-grid a{display:inline-block;margin-top:18px;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#8e6c3e;text-decoration:none;border-bottom:1px solid #B5965A;padding-bottom:4px}
+.rsvp-section{background:#FFF9EF}
+.rsvp-deadline{text-align:center;color:#8e6c3e;font-family:"Playfair Display",serif}
+.rsvp-form{width:min(540px,100%);margin:32px auto 0}
+.attendance-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:25px}
+.attendance-options button{padding:14px 10px;border:1px solid #cbb68f;background:transparent;color:#6E1F2E;font-family:"Playfair Display",serif}
+.attendance-options button.selected{background:#6E1F2E;color:#FFF9EF;border-color:#6E1F2E}
+.rsvp-form label{display:block;font-size:.72rem;letter-spacing:.08em;color:#6E1F2E;margin:16px 0}
+.rsvp-form input,.rsvp-form select,.wish-form input,.wish-form textarea{display:block;width:100%;margin-top:8px;padding:13px 12px;border:1px solid #d9c7a8;background:#fffdf8;color:#291C1A;border-radius:0}
+.button{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:1px solid #6E1F2E;padding:13px 24px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.button-dark{background:#6E1F2E;color:#FFF9EF}.button-dark:hover{background:#42131E}
+.rsvp-form>.button{width:100%;margin-top:8px}
+.form-error{color:#a02b36;font-size:.8rem}.privacy-note{font-size:.68rem;line-height:1.6;color:#8a7a6c;text-align:center}
+.success-message{text-align:center;padding:35px}.success-message svg{color:#8d7449}.success-message h3{font-family:"Playfair Display",serif;color:#42131E}
+.wishes-section{background:#F4EADB}
+.wish-form{max-width:600px;margin:0 auto;display:grid;gap:10px}
+.wish-form .button{justify-self:center;margin-top:5px}
+.wish-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:38px}
+.wish-wall article{padding:22px;background:#FFF9EF;border:1px solid #d9c7a8}
+.wish-wall article>span{font-family:"Playfair Display",serif;font-size:2.5rem;color:#B5965A;line-height:.8}
+.wish-wall article p{font-family:"Playfair Display",serif;font-size:.95rem;line-height:1.7;color:#5c4540}
+.wish-wall article small{font-size:.65rem;color:#8e6c3e}
+.empty-wishes{text-align:center;grid-column:1/-1;color:#806d62;font-family:"Playfair Display",serif}
+.footer{background:#FFF9EF;text-align:center;padding:76px 20px 25px;color:#6E1F2E;border-top:1px solid #d9c7a8}
+.footer-flower{font-size:2rem;color:#B5965A}.footer>p{font-family:"Playfair Display",serif;font-style:italic;color:#8e6c3e}
+.footer h2{font-family:"Italiana",serif;font-size:clamp(2.5rem,7vw,4.8rem);font-weight:400;margin:14px 0}
+.footer h2 i{font-family:"Playfair Display",serif;font-size:.5em;color:#B5965A}
+.footer>small{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:#806d62}
+.footer-bottom{display:flex;justify-content:center;align-items:center;gap:5px;margin-top:50px;padding-top:18px;border-top:1px solid #e6d9c4;font-size:.65rem;color:#8e6c3e}
+.music-control{position:fixed;right:18px;top:18px;z-index:30}
+.music-control button{display:flex;align-items:center;gap:7px;padding:10px 13px;border:1px solid #fff9efaa;background:#42131e;color:#fff9ef;font-size:.68rem;letter-spacing:.08em}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:760px){
+ .section-pad{padding:76px 0}.container{width:min(100% - 34px,600px)}
+ .hero{min-height:680px;height:100svh}.hero-copy{top:13%}.hero h1{font-size:clamp(3rem,13vw,5rem)}
+ .temple-stage{width:130vw;height:59%;bottom:-1%}
+ .event-grid,.things-grid{grid-template-columns:1fr;gap:14px}.event-card{padding:26px 22px}
+ .couple-layout{grid-template-columns:1fr;gap:25px}.couple-text{text-align:center;max-width:520px;margin:auto}
+ .carousel img{height:330px}.carousel{padding-inline:30px}
+ .wish-wall{grid-template-columns:1fr 1fr}
+ .music-control{right:10px;top:10px}.music-control button{padding:9px}
+}
+@media(max-width:420px){
+ .hero{min-height:620px}.hero-copy{top:16%}.hero-kicker{font-size:.55rem}
+ .temple-stage{width:145vw;height:54%}
+ .section-heading h2{font-size:2.2rem}
+ .count-grid{gap:8px}.count-grid div{min-width:58px}.count-grid strong{font-size:2.7rem}.count-grid span{font-size:.52rem}
+ .wish-wall{grid-template-columns:1fr}
+ .attendance-options{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+ .temple-stage{transform:none!important}
+}
+'''
+for name, content in files.items():
+    p = root / name
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(content, encoding="utf-8")
+
+# Include a concise setup guide and data-editing guide.
+(root / "README.md").write_text(r'''# Luxury Indian Wedding Invitation
+
+A mobile-first React + TypeScript + Vite wedding invitation using Tailwind CSS, Framer Motion and Lucide React.
+
+## Run locally
+1. Install Node.js 20 or newer.
+2. In this folder run `npm install`.
+3. Run `npm run dev` and open the local URL shown by Vite.
+4. Run `npm run build` to create the production site in `dist/`.
+
+## Edit wedding details
+Update **only** `src/data/weddingData.ts` for names, date/time, family names, venue, contact details, events, gallery images, hashtag, YouTube video, RSVP deadline and music path.
+
+Replace `public/temple-mandap.png` with your own transparent PNG artwork if desired. The supplied temple artwork has been converted from its black background to transparency for the blue-sky cover.
+
+## Optional assets and integrations
+- Add a licensed audio file at `public/wedding-music.mp3` to enable the music player.
+- Replace the YouTube ID in `weddingData.video.youtubeId` with your pre-wedding film ID.
+- Connect RSVP to a backend/form provider before publishing; the starter currently validates and stores demo responses in the visitor's browser.
+- The Wishes Wall uses localStorage, so wishes are only visible in the same browser/device. Use a database-backed service for a shared public wall.
+
+## Notes
+The supplied brief did not include confirmed family names, venue/address, contact number, event times, or final photo/video URLs. These are clearly editable placeholders in `weddingData.ts`.
+''', encoding="utf-8")
+
+# Write project zip
+zip_path = Path("/mnt/data/luxury_indian_wedding_invitation_react.zip")
+with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED, compresslevel=8) as z:
+    for p in root.rglob("*"):
+        if p.is_file():
+            z.write(p, p.relative_to(root.parent))
+print("Project created:", zip_path, "size:", f"{zip_path.stat().st_size:,}", "bytes")
+print("Files:", sum(1 for p in root.rglob("*") if p.is_file()))
